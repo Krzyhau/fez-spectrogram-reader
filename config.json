@@ -1,8 +1,9 @@
 {
     "puzzlified_path_pattern": "C:/Program Files (x86)/Steam/steamapps/music/FEZ Soundtrack/Disasterpeace - FEZ OST - %s.flac",
     "unpuzzlified_path_pattern": "C:/Program Files (x86)/Steam/steamapps/music/FEZ Soundtrack - Unpuzzlified/01-%s.flac",
-    "images": [
+    "tracks": [
         {
+            "index": 1,
             "track": "02 Puzzle",
             "start": 128.850,
             "end": 132.300,
@@ -10,6 +11,7 @@
             "max_freq": 19500
         },
         {
+            "index": 2,
             "track": "03 Beyond",
             "start": 0.000,
             "end": 6.500,
@@ -17,6 +19,7 @@
             "max_freq": 20000
         },
         {
+            "index": 3,
             "track": "04 Progress",
             "start": 250.350,
             "end": 256.000,
@@ -24,6 +27,7 @@
             "max_freq": 13000
         },
         {
+            "index": 4,
             "track": "05 Beacon",
             "start": 149.080,
             "end": 152.400,
@@ -31,6 +35,7 @@
             "max_freq": 20000
         },
         {
+            "index": 5,
             "track": "06 Flow",
             "start": 1.950,
             "end": 5.250,
@@ -38,6 +43,7 @@
             "max_freq": 20000
         },
         {
+            "index": 6,
             "track": "08 Legend",
             "start": 75.320,
             "end": 78.320,
@@ -45,6 +51,7 @@
             "max_freq": 20000
         },
         {
+            "index": 7,
             "track": "09 Compass",
             "start": 157.300,
             "end": 164.200,
@@ -52,14 +59,16 @@
             "max_freq": 20000
         },
         {
+            "index": 8,
             "track": "10 Forgotten",
             "start": 152.100,
             "end": 154.400,
             "min_freq": 750,
             "max_freq": 21000,
-            "db_delta": 15.0
+            "db_delta": -15.0
         },
         {
+            "index": 9,
             "track": "13 Fear",
             "start": 209.350,
             "end": 212.100,
@@ -67,14 +76,16 @@
             "max_freq": 21000
         },
         {
+            "index": 10,
             "track": "14 Spirit",
             "start": 168.000,
             "end": 172.300,
             "min_freq": 850,
             "max_freq": 21000,
-            "db_delta": 15.0
+            "db_delta": -15.0
         },
         {
+            "index": 11,
             "track": "18 Memory",
             "start": 73.570,
             "end": 76.330,
@@ -82,6 +93,7 @@
             "max_freq": 11000
         },
         {
+            "index": 12,
             "track": "21 Age",
             "start": 166.400,
             "end": 176.250,
@@ -89,6 +101,7 @@
             "max_freq": 20000
         },
         {
+            "index": 13,
             "track": "22 Majesty",
             "start": 195.280,
             "end": 201.880,
@@ -96,6 +109,7 @@
             "max_freq": 20000
         },
         {
+            "index": 14,
             "track": "23 Continuum",
             "start": 148.970,
             "end": 155.870,
@@ -103,6 +117,7 @@
             "max_freq": 20000
         },
         {
+            "index": 15,
             "track": "25 Reflection",
             "start": 493.800,
             "end": 500.550,
@@ -110,6 +125,7 @@
             "max_freq": 21000
         },
         {
+            "index": 16,
             "track": "26 Love",
             "start": 62.800,
             "end": 69.150,
