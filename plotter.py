@@ -25,9 +25,9 @@ def setup():
 
 def generate_spectrogram_image(trackdata: TrackData, path: str):
     fft_size = 4096
-    window_size = 2048
+    window_size = 4096
 
-    hop_size = window_size // 4
+    hop_size = 512
 
     stft = librosa.stft(
         trackdata.spectrogram_audio,
@@ -65,7 +65,7 @@ def prepare_plotting():
     plt.gca().set_position([0.1, 0.1, 0.8, 0.8])
 
 def finalize_plotting(trackdata: TrackData):
-    setup_xaxis(trackdata.start, trackdata.end)
+    setup_xaxis(trackdata.start + trackdata.offset, trackdata.end + trackdata.offset)
     setup_yaxis(trackdata.min_freq, trackdata.max_freq)
 
     plt.xlabel('')
@@ -79,10 +79,16 @@ def finalize_plotting(trackdata: TrackData):
     plt.title("v3", size=16, pad=20, loc='right', color='gray')
 
 def setup_xaxis(start_time, end_time):
+    start_time_abs = abs(start_time)
+    end_time_abs = abs(end_time)
+
+    start_time_sign = "-" if start_time < 0 else ""
+    end_time_sign = "-" if end_time < 0 else ""
+
     plt.xticks(
         plt.gca().get_xlim(), 
-        [f"{int(start_time // 60):02}:{int(start_time % 60):02}:{round((start_time % 1) * 1000):03}", 
-         f"{int(end_time // 60):02}:{int(end_time % 60):02}:{round((end_time % 1) * 1000):03}"]
+        [f"{start_time_sign}{int(start_time_abs // 60):02}:{int(start_time_abs % 60):02}:{round((start_time_abs % 1) * 1000):03}", 
+         f"{end_time_sign}{int(end_time_abs // 60):02}:{int(end_time_abs % 60):02}:{round((end_time_abs % 1) * 1000):03}"]
     )
     plt.gca().xaxis.set_minor_locator(plt.NullLocator())
     plt.gca().xaxis.get_majorticklabels()[0].set_ha('left')

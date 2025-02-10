@@ -5,16 +5,16 @@
         {
             "index": 1,
             "track": "02 Puzzle",
-            "start": 128.850,
-            "end": 132.300,
+            "start": 128.590,
+            "end": 132.560,
             "min_freq": 800,
             "max_freq": 19500
         },
         {
             "index": 2,
             "track": "03 Beyond",
-            "start": 0.000,
-            "end": 6.500,
+            "start": -0.480,
+            "end": 6.980,
             "min_freq": 800,
             "max_freq": 20000
         },
@@ -29,16 +29,16 @@
         {
             "index": 4,
             "track": "05 Beacon",
-            "start": 149.080,
-            "end": 152.400,
+            "start": 148.830,
+            "end": 152.640,
             "min_freq": 480,
             "max_freq": 20000
         },
         {
             "index": 5,
             "track": "06 Flow",
-            "start": 1.950,
-            "end": 5.250,
+            "start": 1.700,
+            "end": 5.500,
             "min_freq": 500,
             "max_freq": 20000
         },
@@ -53,8 +53,8 @@
         {
             "index": 7,
             "track": "09 Compass",
-            "start": 157.300,
-            "end": 164.200,
+            "start": 156.780,
+            "end": 164.720,
             "min_freq": 130,
             "max_freq": 20000
         },
@@ -70,8 +70,8 @@
         {
             "index": 9,
             "track": "13 Fear",
-            "start": 209.350,
-            "end": 212.100,
+            "start": 208.600,
+            "end": 212.750,
             "min_freq": 750,
             "max_freq": 21000
         },
@@ -95,16 +95,16 @@
         {
             "index": 12,
             "track": "21 Age",
-            "start": 166.400,
-            "end": 176.250,
+            "start": 165.660,
+            "end": 176.990,
             "min_freq": 90,
             "max_freq": 20000
         },
         {
             "index": 13,
             "track": "22 Majesty",
-            "start": 195.280,
-            "end": 201.880,
+            "start": 194.780,
+            "end": 202.370,
             "min_freq": 700,
             "max_freq": 20000
         },
@@ -119,16 +119,16 @@
         {
             "index": 15,
             "track": "25 Reflection",
-            "start": 493.800,
-            "end": 500.550,
+            "start": 493.290,
+            "end": 501.050,
             "min_freq": 800,
             "max_freq": 21000
         },
         {
             "index": 16,
             "track": "26 Love",
-            "start": 62.800,
-            "end": 69.150,
+            "start": 62.320,
+            "end": 69.630,
             "min_freq": 450,
             "max_freq": 20000
         }
