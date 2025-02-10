@@ -23,11 +23,7 @@ def setup():
         'ytick.color': 'white',
     })
 
-def generate_spectrogram_image(trackdata: TrackData, path: str):
-    fft_size = 4096
-    window_size = 4096
-
-    hop_size = 512
+def generate_spectrogram_image(trackdata: TrackData, path: str, fft_size=4096, window_size=2048, hop_size=512):
 
     stft = librosa.stft(
         trackdata.spectrogram_audio,
