@@ -36,9 +36,9 @@ def generate_spectrogram_image(trackdata: TrackData, path: str, fft_size=4096, w
     spectrogram = np.abs(stft)
 
     freqs = librosa.fft_frequencies(sr=trackdata.sample_rate, n_fft=fft_size)
-    multiplier = np.linspace(1, 4, len(freqs))
-    spectrogram = spectrogram * multiplier[:, np.newaxis]
-    spectrogram = np.clip(spectrogram, 0, np.max(spectrogram) * 0.6)
+    multiplier = np.linspace(0.5, 1.1, len(freqs))
+    spectrogram = np.pow(spectrogram * np.pow(multiplier[:, np.newaxis], 1.8), 0.5)
+    spectrogram = np.clip(spectrogram, 0.02, np.max(spectrogram) * 0.6)
 
     prepare_plotting()
 
@@ -72,7 +72,7 @@ def finalize_plotting(trackdata: TrackData):
     main_title = f"FEZ Original Soundtrack Spectrograms - {trackdata.name} ({index_identifier})"
 
     plt.title(main_title, size=16, pad=20, loc='left')
-    plt.title("v3", size=16, pad=20, loc='right', color='gray')
+    plt.title("v4", size=16, pad=20, loc='right', color='gray')
 
 def setup_xaxis(start_time, end_time):
     start_time_abs = abs(start_time)

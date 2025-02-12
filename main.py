@@ -44,21 +44,21 @@ def process_track(trackdata : TrackData, force_wav : bool = False, force_img : b
         create_interpolated_image(trackdata, output_img_path)
 
 def create_interpolated_image(trackdata : TrackData, output_img_path : str):
-    gen_count = 20
+    gen_count = 50
 
     fft_size = 4096
-    window_size = 2048
+    window_size = 4096
     hop_size = 512
 
-    fft_size_randomness = 1024
-    window_size_randomness = 512
+    fft_size_randomness = 256
+    window_size_randomness = 256
     hop_size_randomness = 256
 
     temp_path_pattern = f"temp/{trackdata.name}_part_%d.png"
 
     for i in range(gen_count):
         gen_fft_size = random.randint(fft_size - fft_size_randomness, fft_size + fft_size_randomness)
-        gen_window_size = random.randint(window_size - window_size_randomness, window_size + window_size_randomness)
+        gen_window_size = min(random.randint(window_size - window_size_randomness, window_size + window_size_randomness), gen_fft_size)
         gen_hop_size = random.randint(hop_size - hop_size_randomness, hop_size + hop_size_randomness)
     
         print(f"  Generating image part {i+1} / {gen_count} with fft_size={gen_fft_size}, window_size={gen_window_size}, hop_size={gen_hop_size}")
