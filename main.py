@@ -44,7 +44,7 @@ def process_track(trackdata : TrackData, force_wav : bool = False, force_img : b
         create_interpolated_image(trackdata, output_img_path)
 
 def create_interpolated_image(trackdata : TrackData, output_img_path : str):
-    gen_count = 50
+    gen_count = 200
 
     fft_size = 4096
     window_size = 4096
@@ -54,7 +54,8 @@ def create_interpolated_image(trackdata : TrackData, output_img_path : str):
     window_size_randomness = 256
     hop_size_randomness = 256
 
-    temp_path_pattern = f"temp/{trackdata.name}_part_%d.png"
+    temp_path = f"temp/{trackdata.name}.png"
+    np_images = []
 
     for i in range(gen_count):
         gen_fft_size = random.randint(fft_size - fft_size_randomness, fft_size + fft_size_randomness)
@@ -62,19 +63,15 @@ def create_interpolated_image(trackdata : TrackData, output_img_path : str):
         gen_hop_size = random.randint(hop_size - hop_size_randomness, hop_size + hop_size_randomness)
     
         print(f"  Generating image part {i+1} / {gen_count} with fft_size={gen_fft_size}, window_size={gen_window_size}, hop_size={gen_hop_size}")
+        plotter.generate_spectrogram_image(trackdata, temp_path, gen_fft_size, gen_window_size, gen_hop_size)
 
-        temp_image_path = temp_path_pattern % i
-        plotter.generate_spectrogram_image(trackdata, temp_image_path, gen_fft_size, gen_window_size, gen_hop_size)
-
-    images = [Image.open(temp_path_pattern % i) for i in range(gen_count)]
-    np_images = [np.array(img) for img in images]
+        img = Image.open(temp_path)
+        np_images.append(np.array(img))
+        os.remove(temp_path)
 
     avg_image = np.mean(np_images, axis=0).astype(np.uint8)
     avg_image = Image.fromarray(avg_image)
     avg_image.save(output_img_path)
-
-    for i in range(gen_count):
-        os.remove(temp_path_pattern % i)
 
 
 def process_track_starting_with(tracks : List[TrackData], filter_name : str):
