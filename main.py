@@ -15,8 +15,13 @@ CONFIG_PATH = os.path.dirname(__file__) + "/config.json"
 OUT_IMG_PATH = os.path.dirname(__file__) + "/output/img/"
 OUT_WAV_PATH = os.path.dirname(__file__) + "/output/wav/"
 MOSAIC_OUT_PATH = os.path.dirname(__file__) + "/output/fez_spectrogram_images.png"
+TEMP_PATH = os.path.dirname(__file__) + "/temp/"
 
 def process():
+    ensure_dir_exists(OUT_IMG_PATH)
+    ensure_dir_exists(OUT_WAV_PATH)
+    ensure_dir_exists(TEMP_PATH)
+    
     plotter.setup()
     tracks = trackloader.load_tracks(CONFIG_PATH)
     plotter.tracks_count = len(tracks)
@@ -28,6 +33,18 @@ def process():
         process_all_tracks(tracks)
     
     mosaicmaker.create(tracks, OUT_IMG_PATH, MOSAIC_OUT_PATH)
+
+def ensure_dir_exists(path : str):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+def process_track_starting_with(tracks : List[TrackData], filter_name : str):
+    tracks = [track for track in tracks if track.name.startswith(filter_name)]
+    if tracks: process_track(tracks[0], force_wav=True)
+
+def process_all_tracks(tracks : List[TrackData]):
+    for track in tracks:
+        process_track(track)
 
 def process_track(trackdata : TrackData, force_wav : bool = False, force_img : bool = True):
     print(f"Processing track {trackdata.name}")
@@ -54,7 +71,7 @@ def create_interpolated_image(trackdata : TrackData, output_img_path : str):
     window_size_randomness = 256
     hop_size_randomness = 256
 
-    temp_path = f"temp/{trackdata.name}.png"
+    temp_path = f"{TEMP_PATH}{trackdata.name}.png"
     np_images = []
 
     for i in range(gen_count):
@@ -72,15 +89,6 @@ def create_interpolated_image(trackdata : TrackData, output_img_path : str):
     avg_image = np.mean(np_images, axis=0).astype(np.uint8)
     avg_image = Image.fromarray(avg_image)
     avg_image.save(output_img_path)
-
-
-def process_track_starting_with(tracks : List[TrackData], filter_name : str):
-    tracks = [track for track in tracks if track.name.startswith(filter_name)]
-    if tracks: process_track(tracks[0], force_wav=True)
-
-def process_all_tracks(tracks : List[TrackData]):
-    for track in tracks:
-        process_track(track)
 
 
 if __name__ == "__main__":
